@@ -107,6 +107,12 @@
     capSysAdmin = true;
   };
 
+  # Force SDDM to use X11 (NVIDIA + Wayland = black screen)
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    wayland.enable = false;
+  };
+
   # Docker support
   virtualisation.docker.enable = true;
 
@@ -131,14 +137,14 @@
     virt-manager
   ];
 
-  # Nix build settings for laptop
+  # Nix build settings for laptop - reduced for memory
   nix = {
     settings = {
-      max-jobs = lib.mkForce 8;
+      max-jobs = lib.mkForce 4;
       cores = lib.mkDefault 0;
       download-buffer-size = 524288000;
     };
-    nrBuildUsers = 8;
+    nrBuildUsers = 4;
   };
 
   # Audio configuration with Discord/Vivaldi fixes
