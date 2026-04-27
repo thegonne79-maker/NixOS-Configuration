@@ -107,12 +107,6 @@
     capSysAdmin = true;
   };
 
-  # Force SDDM to use X11 (NVIDIA + Wayland = black screen)
-  services.xserver.displayManager.sddm = {
-    enable = true;
-    wayland.enable = false;
-  };
-
   # Docker support
   virtualisation.docker.enable = true;
 
