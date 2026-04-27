@@ -7,7 +7,6 @@
     ../../modules/enable-wg.nix
     ../../environments/i3wm_darthpjb.nix
     ../../environments/steam.nix
-    ../../environments/code.nix
     ../../environments/neovim.nix
     ../../environments/communications.nix
     ../../environments/browsers.nix
