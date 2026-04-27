@@ -367,6 +367,21 @@
           extraModules = [ ./users/build.nix ];
           host = "10.88.127.51";
         };
+
+        # Alienware 18 Area 51 Laptop with RTX 5090
+        alienware-laptop = mkX86_64 "alienware-laptop" {
+          host = "100.74.110.25";  # Tailscale IP for laptop
+          sshUser = "tank";
+          sshPort = 22;
+          extraModules = [
+            ./users/build.nix
+            {
+              environment.systemPackages = [
+                self.inputs.nixpkgs_unstable.legacyPackages.x86_64-linux.sunshine
+              ];
+            }
+          ];
+        };
       };
 
       checks."x86_64-linux" = {
@@ -379,10 +394,10 @@
         };
 
         nixpkgs-fmt = lint-utils.linters.x86_64-linux.nixpkgs-fmt { src = self; };
-      };
+      }     ;
 
       # CI Information Output
-      ci-info = ci-generator.ci-info;
+             ci-info = ci-generator.ci-info;
 
       # CI Configuration (for external access)
       ci = ci;
