@@ -94,7 +94,16 @@
     pkgs.virtiofsd
     pkgs.gwe
     pkgs.virt-manager
-    #self.inputs.nixpkgs_unstable.legacyPackages.x86_64-linux.nixd
+    # Vulkan and DirectX support for Star Citizen
+    pkgs.vulkan-tools
+    pkgs.vulkan-loader
+    pkgs.vulkan-validation-layers
+    pkgs.mesa
+    pkgs.libva
+    pkgs.libva-utils
+    # 32-bit Vulkan for DXVK
+    pkgs.pkgsi686Linux.vulkan-loader
+    pkgs.pkgsi686Linux.mesa
   ];
   nix = {
     settings = {
@@ -240,7 +249,7 @@
     nvidia = {
       nvidiaSettings = true;
       open = false;
-      modesetting.enable = false;
+      modesetting.enable = true;
       powerManagement.enable = true;
     };
   };
